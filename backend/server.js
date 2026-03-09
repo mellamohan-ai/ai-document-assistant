@@ -6,11 +6,21 @@ const PORT = 3000;
 
 app.use(express.json());
 
-// serve frontend folder
+// serve frontend
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/index.html"));
+});
+
+app.post("/ask", (req, res) => {
+  const question = req.body.question;
+
+  console.log("User Question:", question);
+
+  res.json({
+    answer: "AI response will appear here"
+  });
 });
 
 app.listen(PORT, () => {
