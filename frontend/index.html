@@ -1,53 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Document Assistant</title>
-    <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; padding: 50px; background: #f4f4f9; }
-        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 400px; }
-        h1 { font-size: 24px; margin-bottom: 10px; }
-        p { color: #666; margin-bottom: 20px; }
-        input, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box; }
-        button { background: #007bff; color: white; border: none; cursor: pointer; font-weight: bold; }
-        button:hover { background: #0056b3; }
-        #response { margin-top: 20px; padding: 15px; background: #eef2ff; border-radius: 6px; display: none; }
-    </style>
+  <title>AI Document Assistant</title>
 </head>
+
 <body>
-    <div class="container">
-        <h1>AI Document Assistant</h1>
-        <p>Upload document and ask questions</p>
-        
-        <input type="file" id="fileInput">
-        <input type="text" id="questionInput" placeholder="Ask a question">
-        <button onclick="askAI()">Ask AI</button>
 
-        <div id="response">
-            <strong>Response:</strong>
-            <p id="answerText"></p>
-        </div>
-    </div>
+<h1>AI Document Assistant</h1>
 
-    <script>
-        async function askAI() {
-            const question = document.getElementById('questionInput').value;
-            const responseDiv = document.getElementById('response');
-            const answerText = document.getElementById('answerText');
+<p>Upload document and ask questions.</p>
 
-            if (!question) return alert("Please enter a question");
+<input type="file">
 
-            const res = await fetch('/ask', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ question })
-            });
+<br><br>
 
-            const data = await res.json();
-            answerText.innerText = data.answer;
-            responseDiv.style.display = 'block';
-        }
-    </script>
+<input type="text" placeholder="Ask a question">
+
+<button>Ask AI</button>
+
+<p id="response"></p>
+
 </body>
 </html>
